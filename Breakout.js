@@ -1,22 +1,22 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
-let ballRadius = 10;
+let ballRadius = 15;
 let x = canvas.width/2;
 let y = canvas.height-30;
 let dx = 2;
 let dy = -2;
-let paddleHeight = 10;
-let paddleWidth = 75;
+let paddleHeight = 20;
+let paddleWidth = 100;
 let paddleX = (canvas.width-paddleWidth) / 2;
 let rightPressed = false;
 let leftPressed = false;
 let brickRowCount = 3;
 let brickColumnCount = 5;
-let brickWidth = 75;
+let brickWidth = 100;
 let brickHeight = 20;
-let brickPadding = 10;
-let brickOffsetTop = 30;
-let brickOffsetLeft = 30;
+let brickPadding = 20;
+let brickOffsetTop = 40;
+let brickOffsetLeft = 40;
 let score = 0;
 let lives = 3;
 
@@ -53,7 +53,7 @@ function keyUpHandler (e) {
 
 function mouseMoveHandler(e) {
     let relativeX = e.clientX - canvas.offsetLeft;
-    if(relativeX > 0 && relativeX < canvasWidth){
+    if(relativeX > 0 && relativeX < canvas.width){
         paddleX = relativeX - paddleWidth/2;
     }
 }
@@ -80,7 +80,7 @@ function collisionDetection() {
 function drawBall(){
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#ff0000";
     ctx.fill();
     ctx.closePath();  
 }
@@ -88,7 +88,7 @@ function drawBall(){
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = '#0095DD';
+    ctx.fillStyle = '#ff0000';
     ctx.fill();
     ctx.closePath();
 }
@@ -103,7 +103,7 @@ function drawBricks() {
             bricks[c][r].y = brickY;
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
-            ctx.fillstyle = "#0095DD";
+            ctx.fillstyle = "#00ff00";
             ctx.fill();
             ctx.closePath();
             }
@@ -112,14 +112,14 @@ function drawBricks() {
 }
 
 function drawScore() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.font = "23px Arial";
+    ctx.fillStyle = "#00ff00";
     ctx.fillText("Score: " + score, 8, 20);
 }
 
 function drawLives() {
-    ctx.font = "16px Arial";
-    ctx.fillstyle = "#0095DD";
+    ctx.font = "20px Arial";
+    ctx.fillstyle = "#00ff00";
     ctx.fillText("lives: " + lives, canvas.width - 65, 20);
 }
 
@@ -174,7 +174,7 @@ if (y + dy < ballRadius) {
 }
 draw();
 
-
+//pho-ever
 
 /*ctx.beginPath();
 ctx.rect(20, 40, 50, 50);
